@@ -10,7 +10,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: ConstColor.appbarColor,
         title: Text(
           'Rick And Morty',
@@ -19,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SearchBar(),
+          SearchBar(),
           DownListView(),
         ],
       ),

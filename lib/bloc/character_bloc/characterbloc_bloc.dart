@@ -11,11 +11,13 @@ part 'characterbloc_state.dart';
 
 class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
   final characterRepository = CharacterRepository();
-  static int page = 1;
+  int page = 1;
+  bool firstTime = true;
   late CharacterModel characterModel;
+
   CharacterBloc() : super(CharacterblocInitial()) {
     on<FetchCharacter>(_onInit);
-    on<FilterCharacter>(_search);
+    on<SearchCharacter>(_search);
     on<FetchCharacterWithPagination>(_fetchCharacterWithPagination);
   }
   void _onInit(CharacterblocEvent event, Emitter<CharacterblocState> emit) async {
@@ -30,17 +32,29 @@ class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
   }
 
   void _fetchCharacterWithPagination(CharacterblocEvent event, Emitter<CharacterblocState> emit) async {
-    //emit(CharacterblocLoading());
     page++;
     try {
       final CharacterModel ch = await characterRepository.fetchCharacter(page);
       characterModel.singleCharacter.addAll(ch.singleCharacter);
       emit(CharacterblocSucess(characterModel));
     } catch (e) {
-      print(e);
       emit(CharacterblocError());
     }
   }
 
-  void _search(CharacterblocEvent event, Emitter<CharacterblocState> emit) {}
+  void _search(SearchCharacter event, Emitter<CharacterblocState> emit) async {
+    if (firstTime) {
+      page = 1;
+      emit(CharacterblocLoading());
+    }
+    firstTime = false;
+    page++;
+    try {
+      final CharacterModel ch = await characterRepository.searchCharacter(event.query, page);
+      characterModel.singleCharacter.addAll(ch.singleCharacter);
+      emit(CharacterblocSucess(characterModel));
+    } catch (e) {
+      emit(CharacterblocError());
+    }
+  }
 }

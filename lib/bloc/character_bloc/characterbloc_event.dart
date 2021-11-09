@@ -7,7 +7,7 @@ class FetchCharacter extends CharacterblocEvent {}
 
 class FetchCharacterWithPagination extends CharacterblocEvent {}
 
-class FilterCharacter extends CharacterblocEvent {
+class SearchCharacter extends CharacterblocEvent {
   final String query;
-  FilterCharacter({required this.query});
+  SearchCharacter({required this.query});
 }
