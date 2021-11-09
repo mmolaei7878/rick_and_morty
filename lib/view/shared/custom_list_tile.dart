@@ -13,7 +13,7 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context).size;
     return Container(
-      height: mediaquery.height * 0.15,
+      height: mediaquery.height * 0.14,
       width: mediaquery.height * 0.8,
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
