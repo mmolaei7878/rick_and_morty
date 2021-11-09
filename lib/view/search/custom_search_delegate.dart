@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/bloc/search_bloc/search_bloc.dart';
 import 'package:rick_and_morty/util/const_color.dart';
-import 'package:rick_and_morty/view/shared/custom_list_tile.dart';
+import 'package:rick_and_morty/view/shared_widget/custom_list_tile.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final SearchBloc searchBloc;

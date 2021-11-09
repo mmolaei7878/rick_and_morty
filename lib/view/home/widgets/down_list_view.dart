@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/character_bloc/characterbloc_bloc.dart';
 import 'package:rick_and_morty/util/const_color.dart';
-import 'package:rick_and_morty/view/shared/custom_error_widget.dart';
-import 'package:rick_and_morty/view/shared/custom_list_tile.dart';
+import 'package:rick_and_morty/view/shared_widget/custom_error_widget.dart';
+import 'package:rick_and_morty/view/shared_widget/custom_list_tile.dart';
 
 class DownListView extends StatelessWidget {
   DownListView({Key? key}) : super(key: key);
