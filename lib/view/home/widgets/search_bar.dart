@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rick_and_morty/bloc/search_bloc/search_bloc.dart';
 import 'package:rick_and_morty/util/const_color.dart';
-import 'package:rick_and_morty/util/const_string.dart';
+import 'package:rick_and_morty/view/search/custom_search_delegate.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -19,8 +21,8 @@ class SearchBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextField(
-              onTap: () {
-                Navigator.pushNamed(context, ConstString.searchScreenRoute);
+              onTap: () async {
+                showSearch(context: context, delegate: CustomSearchDelegate(BlocProvider.of<SearchBloc>(context)));
               },
               readOnly: true,
               style: GoogleFonts.mountainsOfChristmas(color: Colors.black),

@@ -5,13 +5,11 @@ abstract class SearchState {}
 
 class SearchInitial extends SearchState {}
 
-class SearchLoading extends SearchState {}
+class SearchLoadingState extends SearchState {}
 
-class SearchFailed extends SearchState {}
+class SearchNotFoundState extends SearchState {}
 
-class SearchSucced extends SearchState {
+class SearchLoaded extends SearchState {
   final CharacterModel characterModel;
-  SearchSucced(this.characterModel);
+  SearchLoaded(this.characterModel);
 }
-
-class SearchSuggestion extends SearchState {}

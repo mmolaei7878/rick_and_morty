@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/bloc/character_bloc/characterbloc_bloc.dart';
 import 'package:rick_and_morty/util/const_color.dart';
-import 'custom_list_tile.dart';
+import 'package:rick_and_morty/view/shared/custom_error_widget.dart';
+import 'package:rick_and_morty/view/shared/custom_list_tile.dart';
 
 class DownListView extends StatelessWidget {
   DownListView({Key? key}) : super(key: key);
@@ -29,27 +29,8 @@ class DownListView extends StatelessWidget {
         child: BlocBuilder<CharacterBloc, CharacterblocState>(
           builder: (context, state) {
             if (state is CharacterblocError) {
-              return Container(
-                color: ConstColor.backgroundColor,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'An Error Occured',
-                      style: GoogleFonts.aclonica(color: Colors.white70, fontSize: 24),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    ElevatedButton.icon(
-                        onPressed: () {
-                          context.read<CharacterBloc>().add(FetchCharacterWithPagination());
-                        },
-                        icon: const Icon(Icons.refresh_outlined),
-                        label: const Text('Retry'))
-                  ],
-                ),
+              return CustomErrorWidget(
+                onTap: () => context.read<CharacterBloc>().add(FetchCharacter()),
               );
             }
             if (state is CharacterblocLoading) {

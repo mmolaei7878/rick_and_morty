@@ -17,7 +17,6 @@ class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
 
   CharacterBloc() : super(CharacterblocInitial()) {
     on<FetchCharacter>(_onInit);
-
     on<FetchCharacterWithPagination>(_fetchCharacterWithPagination);
   }
   void _onInit(CharacterblocEvent event, Emitter<CharacterblocState> emit) async {

@@ -20,7 +20,6 @@ class LifeStatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(text);
     return Row(
       children: [
         Container(

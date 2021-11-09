@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SearchBar(),
+          const SearchBar(),
           DownListView(),
         ],
       ),
