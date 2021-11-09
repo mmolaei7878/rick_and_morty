@@ -17,7 +17,7 @@ class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
 
   CharacterBloc() : super(CharacterblocInitial()) {
     on<FetchCharacter>(_onInit);
-    on<SearchCharacter>(_search);
+
     on<FetchCharacterWithPagination>(_fetchCharacterWithPagination);
   }
   void _onInit(CharacterblocEvent event, Emitter<CharacterblocState> emit) async {
@@ -35,22 +35,6 @@ class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
     page++;
     try {
       final CharacterModel ch = await characterRepository.fetchCharacter(page);
-      characterModel.singleCharacter.addAll(ch.singleCharacter);
-      emit(CharacterblocSucess(characterModel));
-    } catch (e) {
-      emit(CharacterblocError());
-    }
-  }
-
-  void _search(SearchCharacter event, Emitter<CharacterblocState> emit) async {
-    if (firstTime) {
-      page = 1;
-      emit(CharacterblocLoading());
-    }
-    firstTime = false;
-    page++;
-    try {
-      final CharacterModel ch = await characterRepository.searchCharacter(event.query, page);
       characterModel.singleCharacter.addAll(ch.singleCharacter);
       emit(CharacterblocSucess(characterModel));
     } catch (e) {
