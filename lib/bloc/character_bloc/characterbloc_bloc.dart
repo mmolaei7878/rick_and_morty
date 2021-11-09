@@ -12,13 +12,13 @@ part 'characterbloc_state.dart';
 class CharacterBloc extends Bloc<CharacterblocEvent, CharacterblocState> {
   final characterRepository = CharacterRepository();
   int page = 1;
-  bool firstTime = true;
   late CharacterModel characterModel;
 
   CharacterBloc() : super(CharacterblocInitial()) {
     on<FetchCharacter>(_onInit);
     on<FetchCharacterWithPagination>(_fetchCharacterWithPagination);
   }
+
   void _onInit(CharacterblocEvent event, Emitter<CharacterblocState> emit) async {
     emit(CharacterblocLoading());
     try {
