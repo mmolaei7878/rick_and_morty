@@ -11,7 +11,7 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final characterRepository = CharacterRepository();
-  late final CharacterModel characterModel;
+  CharacterModel? characterModel;
   SearchBloc() : super(SearchInitial());
 
   @override
@@ -23,6 +23,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         characterModel = ch;
         yield SearchLoaded(characterModel);
       } catch (e) {
+        print(e);
         yield SearchNotFoundState();
       }
     }

@@ -10,6 +10,6 @@ class SearchLoadingState extends SearchState {}
 class SearchNotFoundState extends SearchState {}
 
 class SearchLoaded extends SearchState {
-  final CharacterModel characterModel;
+  final CharacterModel? characterModel;
   SearchLoaded(this.characterModel);
 }
