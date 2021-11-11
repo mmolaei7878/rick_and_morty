@@ -5,13 +5,13 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:rick_and_morty/model/character_model.dart';
-import 'package:rick_and_morty/repository/character_repository.dart';
+import 'package:rick_and_morty/repository/character_repository_impl.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final characterRepository = CharacterRepository();
+  final characterRepository = CharacterRepositoryImpl();
   CharacterModel? characterModel;
   SearchBloc() : super(SearchInitial());
 
