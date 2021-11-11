@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:rick_and_morty/model/character_model.dart';
+import 'package:rick_and_morty/repository/repository.dart';
 
-class CharacterRepository {
+class CharacterRepository implements Repository {
   Dio dio = Dio(
     BaseOptions(baseUrl: "https://rickandmortyapi.com", connectTimeout: 10000, receiveTimeout: 10000),
   );
 
+  @override
   Future<CharacterModel> fetchCharacter([int page = 1]) async {
     try {
       Response response = await dio.get("/api/character?page=$page");
@@ -19,6 +21,7 @@ class CharacterRepository {
     }
   }
 
+  @override
   Future<CharacterModel> searchCharacter(String query, [int page = 1]) async {
     try {
       Response response = await dio.get("/api/character?page=$page&name=$query");

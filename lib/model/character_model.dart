@@ -1,4 +1,6 @@
-class CharacterModel {
+import 'package:equatable/equatable.dart';
+
+class CharacterModel extends Equatable {
   CharacterModel({
     required this.info,
     required this.singleCharacter,
@@ -17,6 +19,10 @@ class CharacterModel {
     _data['results'] = singleCharacter.map((e) => e.toJson()).toList();
     return _data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [singleCharacter];
 }
 
 class Info {

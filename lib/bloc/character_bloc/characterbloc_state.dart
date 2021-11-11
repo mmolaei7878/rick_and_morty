@@ -1,7 +1,10 @@
 part of 'characterbloc_bloc.dart';
 
 @immutable
-abstract class CharacterblocState {}
+abstract class CharacterblocState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class CharacterblocInitial extends CharacterblocState {}
 

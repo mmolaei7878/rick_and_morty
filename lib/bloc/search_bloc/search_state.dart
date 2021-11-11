@@ -1,7 +1,10 @@
 part of 'search_bloc.dart';
 
 @immutable
-abstract class SearchState {}
+abstract class SearchState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class SearchInitial extends SearchState {}
 
