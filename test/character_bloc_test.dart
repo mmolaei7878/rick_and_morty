@@ -19,19 +19,28 @@ void main() {
   });
 
   group('Character Bloc Test', () {
-    group('Bloc test', () {
-      blocTest(
-        'Fetch homeScreen Character List => emits [CharacterblocLoading(), CharacterblocSucess()]',
-        build: () => characterBloc,
-        act: (CharacterBloc characterBloc) => characterBloc.add(FetchCharacter()),
-        wait: const Duration(seconds: 2),
-        expect: () => [
-          CharacterblocLoading(),
-          CharacterblocSucess(characterModel),
-        ],
-      );
-    });
+    blocTest(
+      'Fetch homeScreen Character List => emits [CharacterblocLoading(), CharacterblocSucess()]',
+      build: () => characterBloc,
+      act: (CharacterBloc characterBloc) => characterBloc.add(FetchCharacter()),
+      wait: const Duration(seconds: 2),
+      expect: () => [
+        CharacterblocLoading(),
+        CharacterblocSucess(characterModel),
+      ],
+    );
+    blocTest(
+      'Fetch homeScreen Character List => emits [CharacterblocLoading(), CharacterblocSucess()]',
+      build: () => characterBloc,
+      act: (CharacterBloc characterBloc) => characterBloc.add(FetchCharacterWithPagination()),
+      wait: const Duration(seconds: 2),
+      expect: () => [
+        CharacterblocLoading(),
+        CharacterblocSucess(characterModel),
+      ],
+    );
   });
+
   tearDown(() {
     characterBloc.close();
   });
